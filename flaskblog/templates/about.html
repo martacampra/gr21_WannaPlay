@@ -1,0 +1,49 @@
+{% extends "index.html" %}
+{% block content %}
+    <!-- ======= About Us Section ======= -->
+    <section id="about-us" class="about-us">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>About Us</h2>
+        </div>
+
+        <div class="row content">
+          <div class="col-lg-6" data-aos="fade-right">
+            <h2>Wanna Play?</h2>
+            <h3 style="text-align: justify">A community that connects people in every moment and place, starting from the city of Turin.</h3>
+              <p style="color: #FFFFFF">  . </p>
+           <img src="{{ url_for('static', filename='about.jpg' ) }} " style="text-align: center" >
+          </div>
+
+          <div class="col-lg-6 pt-4 pt-lg-0" data-aos="fade-left">
+            <p style="text-align: justify">
+              Wanna Play? was born from the idea of a group of student to provide a website to match people who want to play the same sport
+                and allow them to share their passion. <br>
+
+            </p>
+            <ul>
+                <li>
+                    <i class="ri-check-double-line"></i>
+                    <p style="text-align: justify">The sport is the most common hobby in the world: it allows people to stay healthy,
+                    to have fun and to make new friends. For these reasons, WannaPlay? results in a useful website to prevent people from losing this habit.
+                    </p>
+                </li>
+            </ul>
+                <ul>
+                    <p style="text-align: justify">
+                        This platform has the purpose to solve the recurring problem to find all the teammates to play a team sport with.
+                        That is an issue for the ones that are new in town, but also when none of your mates are up for a match.
+                        But it is also very useful to all people that want to improve their own sport skills and do not know anyone of the same level to play with.
+
+                    </p>
+                </ul>
+
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Us Section -->
+{% endblock content %}
+
+

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends "index.html" %}
+{% block content %}
+
+
+
+<body class="body-wrapper"   background="{{ url_for('static', filename='hom.png' ) }}" style="background-size: cover; background-attachment: fixed" >
+
+<section class="user-profile section">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-10 offset-md-1 col-lg-4 offset-lg-0">
+				<div class="sidebar">
+					<div class="widget user-dashboard-profile">
+						<div class="profile-thumb">
+							<img src="{{ image_file }}"  alt="" class="rounded-circle" style="height: 5cm; width: 5cm"  >
+						</div>
+						<h2 class="text-center">{{ current_user.name }} {{ current_user.surname }}</h2>
+						<p class="text-secondary">{{ current_user.email }}</p>
+					</div>
+					<div class="widget user-dashboard-menu">
+						<ul>
+							<h2> My sports: </h2>
+                            {% for sport_play1 in sportp %}
+                                <div class="media">
+
+                                    <div class="media-body">
+
+                                        <p class="text-dark" style="text-align: justify"> Playing <b>{{ sport_play1.sport.name}}</b>  at level <b>{{ sport_play1.level }}</b></p>
+                                    </div>
+                                </div>
+                            {% endfor %}
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-10 offset-md-1 col-lg-8 offset-lg-0">
+				<!-- Edit Personal Info -->
+				<div class="widget personal-info">
+					<h2 class="widget-header user">Account Information</h2>
+					<form method="POST" action="" enctype="multipart/form-data">
+                        {{ form.hidden_tag() }}
+						<!-- First Name -->
+                    <div class="form-row">
+						<div class="form-group col">
+						    <label for="first-name">First Name</label>
+                            {% if form.name.errors %}
+                                {{ form.name(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.name.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.name(class="form-control form-control-lg") }}
+                            {% endif %}
+
+						</div>
+						<!-- Last Name -->
+						<div class="form-group col">
+						    <label for="last-name">Last Name</label>
+						    {% if form.surname.errors %}
+                                {{ form.surname(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.surname.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.surname(class="form-control form-control-lg") }}
+                            {% endif %}
+						</div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col">
+						    <label for="current-email">Email</label>
+						    {% if form.email.errors %}
+                                {{ form.email(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.email.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.email(class="form-control form-control-lg") }}
+                            {% endif %}
+						</div>
+                        <div class="form-group col">
+						    <label for="birthdate">Birthdate</label>
+						    {% if form.birthdate.errors %}
+                                {{ form.birthdate(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.birthdate.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.birthdate(class="form-control form-control-lg") }}
+                            {% endif %}
+						</div>
+                    </div>
+						<!-- File chooser -->
+						<div class="form-group choose-file">
+                            <label for="picture">Update profile picture</label>
+						    {{ form.picture(class="form-control-file") }}
+                            {% if form.picture.errors %}
+                                {% for error in form.picture.errors %}
+                                    <span class="text-danger">{{ error }}</span>
+                                {% endfor %}
+                            {% endif %}
+						 </div>
+						<!-- Submit button -->
+						<div class="form-group">
+                            {{ form.submit(class="btn btn-outline-info") }}
+                        </div>
+					</form>
+				</div>
+             <div class="widget personal-info">
+					<h2 class="widget-header user">Sport Information</h2>
+					<form method="POST" action="" enctype="multipart/form-data">
+                        {{ form2.hidden_tag() }}
+                    <div class="form-row">
+						<div class="form-group col-6">
+						    <label for="sport1">Sport</label>
+                            {% if form2.sport1.errors %}
+                                {{ form2.sport1(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form2.sport1.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form2.sport1(class="form-control form-control-lg") }}
+                            {% endif %}
+
+						</div>
+						<div class="form-group col-6">
+						    <label for="level1">Level</label>
+						    {% if form2.level1.errors %}
+                                {{ form2.level1(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form2.level1.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form2.level1(class="form-control form-control-lg") }}
+                            {% endif %}
+						</div>
+                    </div>
+                       <div class="form-group">
+                        {{ form2.add(class="btn btn-outline-info") }}
+                    </div>
+
+                    </div>
+
+
+
+
+
+
+		</div>
+	</div>
+</section>
+
+
+
+
+</body>
+
+</html>
+
+{% endblock content %}

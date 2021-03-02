@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% extends "index.html" %}
+{% block content %}
+
+
+
+    <body background="{{ url_for('static', filename='hom.png' ) }}" style="background-size: cover; background-attachment: fixed" >
+<section class="section-sm ">
+	<div class="container  ">
+<div class="col">
+
+				<div class="widget personal-info ">
+					<h3 class="widget-header user">Create an event</h3>
+					<form method="POST" action="" >
+                        {{ form.hidden_tag() }}
+
+                        <div class="form-row">
+						<div class="form-group col ">
+						    <label for="sport">Sport</label>
+                            {% if form.sport.errors %}
+                                {{ form.sport(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.sport.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.sport(class="form-control form-control-lg") }}
+                            {% endif %}
+
+						</div>
+						<!-- Last Name -->
+						<div class="form-group col">
+						    <label for="level">Level</label>
+						    {% if form.level.errors %}
+                                {{ form.level(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.level.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.level(class="form-control form-control-lg ") }}
+                            {% endif %}
+						</div>
+                        <div class="form-group col">
+						    <label for="place">Place</label>
+						    {% if form.place.errors %}
+                                {{ form.place(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.place.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.place(class="form-control form-control-lg ") }}
+                            {% endif %}
+						</div>
+                        </div>
+                        <div class="form-row">
+
+                        <div class="form-group col">
+						    <label for="date">Date</label>
+						    {% if form.date.errors %}
+                                {{ form.date(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.date.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.date(class="form-control form-control-lg") }}
+
+                            {% endif %}
+						</div>
+                        <div class="form-group col">
+						    <label for="time">Time</label>
+						    {% if form.time.errors %}
+                                {{ form.time(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.time.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.time(class="form-control form-control-lg") }}
+                            {% endif %}
+						</div>
+                        <div class="form-group col">
+						    <label for="np">Number of participants</label>
+						    {% if form.np.errors %}
+                                {{ form.np(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.np.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.np(class="form-control form-control-lg") }}
+                            {% endif %}
+						</div>
+                        <div class="form-group col">
+						    <label for="cost">Cost</label>
+						    {% if form.cost.errors %}
+                                {{ form.cost(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.cost.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.cost(class="form-control form-control-lg") }}
+                            {% endif %}
+						</div>
+                        </div>
+
+						<!-- Submit button -->
+						<div class="form-group">
+                            {{ form.submit(class="btn btn-outline-info") }}
+                        </div>
+                    </form>
+                        </div>
+
+					</form>
+				</div>
+</div>
+    </div>
+
+</section>
+    </body>
+{% endblock content %}

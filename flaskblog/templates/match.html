@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends "index.html" %}
+{% block content %}
+<body class="body-wrapper"  background="{{ url_for('static', filename='hom.png' ) }}" style="background-size: cover; background-attachment: fixed" >
+
+
+<section class="section-sm">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3">
+				<div class="category-sidebar">
+
+
+<div class="widget product-shorting">
+	<h4 class="widget-header">Go back to all events!</h4>
+    <div class="">
+          <a class="btn btn-info fa fa-arrow-circle-o-left" type="submit"  href="{{ url_for('main.home') }}">   All events</a>
+	</div>
+
+</div>
+
+				</div>
+			</div>
+			<div class="col-md-9">
+
+
+				<div class="product-grid-list">
+					<div class="row ">
+						<div class="col">
+							<!-- product card -->
+{% for sport_c in posts %}
+    {% for event in sport_c %}
+    <div class="product-item bg-light">
+	    <div class="article-content">
+            <div class="thumb-content">
+			<!-- <div class="price">$200</div> -->
+				<img class="rounded-circle article-img" style="float: left; padding: 15px"  src="{{ url_for('static', filename='profile_pics/' +event.creator.image_file) }}" height="120" width="120" alt="Card image cap">
+		    </div>
+
+            <div class="card-body">
+
+		    <h3 class="card-title"><a> <i class="fa fa-map-marker"></i> <b>{{ event.place.name }}</b></a></h3>
+            <h6 class="card-title"><a>Sport: <b> {{ event.sportevent.name }} </b> at level: <b> {{  event.level }}</b></a></h6>
+		    <ul class="list-inline product-meta">
+		    	<li class="list-inline-item">
+		    		<a5 ><i class="fa fa-euro"></i><b> {{ event.cost }}</b> per participant </a5>
+		    	</li>
+		    	<li class="list-inline-item">
+		    		<a5><i class="fa fa-calendar"></i> <b> {{ event.date }}</b></a5>
+		    	</li>
+                <li class="list-inline-item">
+		    		<a5 ><i class="fa fa-clock-o"></i> <b> {{ event.time }}</b></a5>
+		    	</li>
+                 <li class="list-inline-item">
+		    		<a5 ><i class="fa fa-user"></i> <b> {{ event.np }}</b> participants</a5>
+		    	</li>
+		    </ul>
+            <ul class="list-inline product-meta">
+		    	<li class="list-inline-item">
+		    		<a5 >Do you wanna play with <b> {{ event.creator.name }} {{ event.creator.surname }}</b> ?</a5>
+		    	</li>
+            </ul>
+            <ul class="list-inline product-meta">
+		    	<li class="list-inline-item">
+		    		<a5 >Already in this event  <b> {{ join[event.id][1] }} </b> participants: </a5>
+		    	</li>
+
+                {% for pa in join[event.id][0] %}
+          <li class="list-inline-item">
+        			<a5 > <b> {{ pa.joined.name }} {{ pa.joined.surname }}</b> </a5>
+       		</li>
+          {% endfor %}
+</ul>
+            {% if join[event.id][1] < event.np %}
+            <div class="modal-footer">
+                <form action="{{ url_for('events.join', event_id=event.id) }}" method="POST">
+                    <input class="btn btn-info" type="submit" value="Join">
+                </form>
+            </div>
+            {% endif %}
+		</div>
+	</div>
+</div>
+{% endfor %}
+{% endfor %}
+
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+</body>
+
+</html>
+{% endblock content %}
